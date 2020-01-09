@@ -24,4 +24,5 @@ dependencies:
       filters:
         - name: ".*"
           versions: "L.Y.Y"  # locked to 2.X.X
-
+        - name: ".*intrepid-group/astro*"
+          versions: "L.L.L"
