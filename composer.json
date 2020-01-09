@@ -1,0 +1,104 @@
+{
+    "name": "intrepid-group/astro-sample",
+    "description": "Sample project template using the Astro distribution",
+    "type": "project",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "composer/installers": "1.6.0",
+        "cweagans/composer-patches": "1.6.6",
+        "drupal/console": "^1.2",
+        "drush/drush": "~8.0",
+        "drupal-composer/drupal-scaffold": "^2.2",
+        "webflo/drupal-finder": "^1.0.0",
+        "drupal/drupal-library-installer-plugin": "0.3",
+        "intrepid-group/astro": "2.15.0",
+        "drupal/webform": "5.6",
+        "drupal/easy_breadcrumb": "^1.8",
+        "phpstan/phpstan": "^0.10.3",
+        "phpunit/phpunit": "^7.3",
+        "friendsofphp/php-cs-fixer": "^2.13",
+        "burst/d8_s3_backup": "dev-master",
+        "drupal/honeypot": "^1.29"
+    },
+    "require-dev": {
+        "beet/box": "^0.8.15",
+        "symfony/phpunit-bridge": "^4.0"
+    },
+    "extra": {
+        "installer-paths": {
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/profiles/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "web/modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "web/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ],
+            "drush/contrib/{$name}": [
+                "type:drupal-drush"
+            ]
+        }
+    },
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ]
+    },
+    "scripts": {
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "pre-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "pre-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "post-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "post-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "build": [
+            "php-cs-fixer fix --diff --allow-risky=yes",
+            "phpstan analyse -c phpstan.neon --level=4 web/themes/custom/peakdmc",
+            "yarn lint:scss --fix"
+        ],
+        "ci": [
+            "php-cs-fixer fix --diff --dry-run",
+            "phpstan analyse -c phpstan.neon --level=4 web/themes/custom/peakdmc",
+            "yarn lint:scss"
+        ]
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:peak-adventure-travel/astro-distribution.git",
+            "no-api": true
+        }
+    ],
+    "replace": {
+        "drupal/drupal": "*"
+    }
+}
