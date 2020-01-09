@@ -9,7 +9,7 @@ dependencies:
     branch_prefix: support/
     related_pr_behavior: close
     github_base_branch: master
-      pullrequest_notes: Please make sure that this PR is based against master - then, create a hotfix branch for the support sprint and rebase this PR against it. If the changes seem sound, merge the branch into the hotfix branch.
+    pullrequest_notes: Please make sure that this PR is based against master - then, create a hotfix branch for the support sprint and rebase this PR against it. If the changes seem sound, merge the branch into the hotfix branch.
 - type: php
   path: /
   settings:
