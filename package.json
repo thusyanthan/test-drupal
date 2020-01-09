@@ -52,7 +52,7 @@
     "objectFitPolyfill": "^2.1.1",
     "panini": "^1.6.2",
     "popper.js": "^1.14.3",
-    "scrollreveal": "^3.4.0",
+    "scrollreveal": "4.0.5",
     "waypoints": "^4.0.1"
   },
   "browser": {
