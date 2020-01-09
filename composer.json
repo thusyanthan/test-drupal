@@ -4,6 +4,11 @@
     "type": "project",
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "config": {
+        "platform": {
+            "php": "7.2"
+        }
+    },
     "require": {
         "composer/installers": "1.6.0",
         "cweagans/composer-patches": "1.6.6",
